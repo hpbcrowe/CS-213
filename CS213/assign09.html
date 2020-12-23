@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang ="en">
+    <head>
+        <title>Ajax </title>
+        <!--<link rel="stylesheet" href="assign09.css">-->
+        <script src="assign09.js"></script>
+        
+    </head>
+<body>
+        
+    <section>
+   <form class ="countries">
+            <h1>Ten Largest Cities</h1>
+            <fieldset>
+        <select id="drop" >
+            <option value = "mexico.txt" onclick="getPop(this.value)">Mexico's population</option>
+            <option value = "usa.txt" onclick="getPop(this.value)">USA's population</option>
+            <option value = "canada.txt" onclick="getPop(this.value)">Canada's population</option>
+            <option value = "russia.txt" onclick="getPop(this.value)">Russia's population</option>
+        </select>
+        <div><pre id='showCountries'></pre></div><br>
+    </fieldset>
+       </form>
+       </section>
+<section>
+    <h2> header</h2>
+    <form class ="list"> 
+            <fieldset>
+    <p><b>Type the name of a text file below:</b></p> 
+    <p>Either <b>json.txt </b> or <b>json1.txt</b> </p>
+    <p>Then click on the button</p>
+
+ <input type="text"  id="idText" value ="json.txt">
+ <input type="button" onclick="getJson()" value="Retrieve JSON"> <br>
+ <p>List of Students </p>
+
+
+ 
+   
+<p> <span id="txtHint"></span></p>
+</fieldset>
+</form> 
+</section>
+
+
+ <!-- Navigation Bar -->
+ <div class="navbar">
+    <a href="assign02.html">Homepage</a>
+    <a href="index.html">CS213 Assignments</a>
+            
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+ 
+ <!DOCTYPE html>
+ <html lang ="en"> 
+ <head> 
+ <title> Assignment 10 </title>
+ </head>
+
+
+
+<body onLoad= refreshData()>
+<div id="json_data"> </div>
+
+<header id="head">
+		<a href="../index.html" class="button">CS 213</a>
+		
+	</header> 
+
+<script>
+
+
+	function refreshData(){
+      var display = document.getElementById("json_data");
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.open("GET", "assign10.php");
+      xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      xmlhttp.send();
+      xmlhttp.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+          display.innerHTML = this.responseText;
+		  var theData = JSON.parse(this.responseText);
+		  renderHTML(theData);
+        } else {
+          display.innerHTML = "Loading...";
+        };
+      }
+    }
+    
+           function renderHTML(data){
+                var htmlString = " ";
+                htmlString += "<table>";
+		            htmlString += "<tr>";
+		          	htmlString += "<th>Filename</th>";
+			           htmlString += "<th>Type</th>";
+		           	htmlString += "<th>CWD</th>";
+			          htmlString += "<th>Action</th>";
+		            htmlString += "</tr>";
+                for(i=0; i < data.length; i++){
+                     htmlString += "<tr>"
+			             	htmlString += "<td>&nbsp;" + data[i].fileName + "</td>";
+				            htmlString += "<td>&nbsp;" + data[i].fileType +  "</td>";
+				            if(data[i].fileType == "dir"){htmlString += "";}
+				            else{
+				            htmlString += "<td>&nbsp;" + data[i].cwd + "</td>";
+				            htmlString += "<td><a href=\"" + data[i].fileName + "\">";
+				             htmlString += "Click to display" + "</td>" 
+				              }
+			              htmlString += "</tr>";
+		               }
+		                htmlString += "</table>";
+		                document.getElementById("json_data").innerHTML = htmlString;                 
+                    
+                }
+             
+            
+    
+</script>
+
+ 
+ </body>
+ 
+ </html>

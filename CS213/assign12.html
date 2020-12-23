@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang ="en">
+    <head>
+        <title>Week 12 Ajax </title>
+        <link rel="stylesheet" href="assign07.css">
+        <script src="assign12.js"></script>
+        
+    </head>
+<body>
+        
+   
+<section>
+    <h2> Mileage Calculator</h2>
+    <form class ="distance"  > 
+            <fieldset>
+    <p><b>Please enter the following information to determine the distance between the two chosen cities:</b></p> 
+    
+    <p>Then click on the calculate mileage button</p>
+            <br/>
+
+<p>Please enter the name of the first City </p>
+ <input type="text" name="startCity" id="startCity" >
+ <button onclick="document.getElementById('startCity').value = ''">Click to clear City</button> 
+ <p> <span id="startCityHint"></span></p>
+ <p>Abbreviation for first State</p>
+ <input type="text" name="startState" id="startState" >
+ <button onclick="document.getElementById('startState').value = ''">Click to clear State</button>
+ <p> <span id="startStateHint"></span></p>
+ 
+ <p>Please enter the name of the destination City </p>
+ <input type="text" name="endCity" id="endCity" >
+ <button onclick="document.getElementById('endCity').value = ''">Click to clear City</button>
+ <p> <span id="endCityHint"></span></p>
+ 
+ <p>Abbreviation for destination State</p>
+ <input type="text" name="endState" id="endState" >
+ <button onclick="document.getElementById('endState').value = ''">Click to clear State</button>
+ <p> <span id="endStateHint"></span></p>
+ 
+ <br/>
+ <br/>
+ <input type="reset"  value="Clear Form"> 
+ <input type="button" onclick="getJson()" value="Calculate Mileage"> <br>
+ 
+ 
+   
+<p> <span id="txtHint" style="color:purple;line-height: 1.8"></span></p>
+<p> <span id="mode" style="color:purple"></span></p>
+</fieldset>
+</form> 
+</section>
+
+
+ <!-- Navigation Bar -->
+ <div class="navbar">
+    <a href="assign02.html">Homepage</a>
+    <a href="index.html">CS213 Assignments</a>
+            
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

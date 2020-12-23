@@ -1,0 +1,42 @@
+
+* {
+    
+    flex-wrap: nowrap;
+    
+    background-color: linen;
+    justify-content: center;
+  }
+  
+  
+    #amount{
+        margin: 10px;
+        text-align: center;
+       
+    }
+
+
+body {
+    background-color: linen;
+    margin: 10px;
+    text-align: center;
+    
+  }
+
+  input {
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 5px solid rgb(78, 40, 45);
+    border-radius: 4px;
+  }
+
+    h1{
+        padding: 8px;
+        background-color: grey;
+    }
+
+    footer{
+        padding: 8px;
+        background-color: grey;
+    }

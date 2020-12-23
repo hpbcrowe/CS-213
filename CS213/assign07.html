@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>JavaScript Mortgage Calculator</title>
+        <link rel="stylesheet" href="assign07.css">
+        <script>
+            function getValue(){
+            amount = document.getElementById('amount').value; //* 1;
+            apr = document.getElementById('apr').value; //* 1;
+             term = document.getElementById('term').value; // * 1;
+            }
+                function computeLoan(){
+                      // getValue();
+                   amount = document.getElementById('amount').value * 1;
+                    apr = document.getElementById('apr').value * 1;
+                    term = document.getElementById('term').value * 1;
+                  // document.getElementById("testId").innerHTML=amount + " " + apr + " " + term; 
+                  checkAllFields();
+                    var months = term * 12; 
+                    var interest = (amount * (apr * .01)) / months;
+                    var payment = ((amount/months) + interest).toFixed(2);                    
+                    payment = payment.toString().replace(/\B(?=(\d{3})+(?!\d)) /g, ",");
+                    
+                    document.getElementById('payment').innerHTML = "Monthly Payment = $" + payment;
+                   
+                }
+                function clearAmount(){
+                    document.getElementById("amount").value=" "; 
+                }
+                function clearApr(){
+                    document.getElementById("apr").value=" "; 
+                }
+                function clearTerm(){
+                    document.getElementById("term").value=" "; 
+                }
+
+                function clearFunction(){
+                   
+                    document.getElementById("amount").value=" ";
+                    document.getElementById("apr").value=" ";
+                    document.getElementById("term").value=" ";
+                    
+                }
+                function checkLoanAmt(){
+                   var amt, 
+                   amt = document.getElementById("amount").value;
+                   if(isNaN(amt) || amt < 1 ) {
+                    document.getElementById("loan").innerHTML = "Loan amount must be greater than zero and a number.";
+                   } else{
+                    document.getElementById("loan").innerHTML = " ";
+                   } 
+                                
+                   
+                }
+                function checkApr(){
+                    var x, 
+                   x = document.getElementById("apr").value;
+                   if(isNaN(x) || x < 1 || x > 25) {
+                    document.getElementById("rate").innerHTML = "Annual interest rate must be between 0 and 25%.";
+                   } else{
+                    document.getElementById("rate").innerHTML = " ";
+                   } 
+                }
+                function checkLoanTerm(){
+                    var x, 
+                   x = document.getElementById("term").value;
+                   if(isNaN(x) || x < 1 || x > 40) {
+                    document.getElementById("years").innerHTML = "Loan term must be between 1 and 40 years.";
+                   } else{
+                    document.getElementById("years").innerHTML = " ";
+                   } 
+                }
+                function checkAllFields(){
+                    var amt,x,trm;
+                    amt = document.getElementById("amount").value;
+                    x = document.getElementById("apr").value;
+                    trm =  document.getElementById("term").value;
+                    if(amt ==" "|| x == " " || trm == " "){
+                        document.getElementById("filled").innerHTML = "Every field must be filled out before calculating payment. "; 
+
+                    }else{
+                        document.getElementById("filled").innerHTML = " ";
+                    }
+                }
+            </script>
+    </head>
+    <body>
+        <h1 style="font-family: 'Times New Roman', Times, serif;">Mortgage Calculator</h1>
+        <form>
+            <fieldset>
+                <legend>Mortgage information</legend>
+                <p>Loan Amount: $ </p>
+ <input id="amount" value="Loan amount." onclick = "clearAmount()" onchange="checkLoanAmt()" style ="text-align:center; width:200px">
+ <p id="loan" style =color:red; ></p>
+<br>
+<p>Annual Percentage Rate: </p>
+ <input id="apr"  value="Please enter interest rate"  onclick = "clearApr()" onchange="checkApr()"> 
+ <p id="rate" style =color:red; ></p>
+<br>
+<p>Loan Term: </p>
+<input id="term"  value="Length of Loan"  onclick="clearTerm()" onchange="checkLoanTerm()">
+<br>
+<p id="years" style=color:red;></p>
+<br>
+        <p id="filled" style=color:red;> </p> 
+        <br>
+<br>
+
+
+
+<h2 id="payment"></h2>
+</fieldset>
+        </form>
+        <br>         
+        <input type="button" onclick="clearFunction()" value="Clear">
+        <input type="button" onclick="computeLoan()" value="Calculate">
+        
+
+
+   </body>
+<footer>
+      <!-- Navigation Bar -->
+<div class="navbar">
+        <a href="assign02.html">Homepage</a>
+        <a href="index.html">CS213 Assignments</a>
+                
+      </div>
+</footer>
+
+</html>

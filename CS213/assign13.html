@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang ="en">
+    <head>
+        <title>Register Piano Students</title>
+        <link rel="stylesheet" href="assign13.css">
+        <script src="assign13.js"></script>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+<body>
+        <h1>BYU Idaho Annual Festival</h1>
+
+<form action="/assign13.php" method="get">
+   <fieldset>
+       <legend>Registration Information </legend>
+       <fieldset>
+            <legend>Performance Information</legend>
+            <div class ="row1">
+                   
+                    <div>Building:  </div>
+                    
+                    <div>Room# </div>
+                    <div>Time Slot </div>
+                    <div>Type of Performance </div>
+            
+                <div>
+                        <input list="location" name="location"  required>
+                        <datalist id="location">
+                            <option value="Snow">
+                            <option value="Austin"> 
+                            <option value="Smith"> 
+                            <option value="Audit">     
+                        </datalist>
+                </div>
+                <div>
+                        <input type="text" name="room" id="room" size="10" required>
+                </div>
+                <div>
+                        <input list="time_slot" name="time_slot" required>
+                        <datalist id="time_slot">
+                            <option value="8:00 am">
+                            <option value="9:45 am"> 
+                            <option value="11:30 am"> 
+                            <option value="1:15 pm">  
+                            <option value="3:00 pm"> 
+                            <option value="4:45 pm"> 
+                            <option value="6:30 pm">  
+                        </datalist>
+              <div class="performance">
+                       <input type="radio" name="performance" id="performance" value="solo" onclick="hideDuetStudent()" checked> Solo<br>
+                       <input type="radio" name="performance"  value="duet" onclick="addDuetStudent()"> Duet<br>
+                       <input type="radio" name="performance" value="concerto" onclick="hideDuetStudent()"> Concerto                                   </div>
+              </div>
+    
+            </div>
+        </fieldset>
+       <fieldset>
+     <legend>Student Information:</legend>
+   <div class="row2">
+     <div class="column">First Name </div>
+     <div class="column">Last Name </div>
+     <div class="column">Student Id </div>
+     <div class="column">Skill level </div>
+     <div class="column">Instrument </div>
+    
+    
+       
+     <div> <input type="text" name="first_name" id="first_name" size="20" required>
+        </div>
+     <div>
+     <input type="text" name="last_name" id="last_name" size="20" required>
+     </div>
+     <div>
+            <input type="text" name="student_id" id="student_id" size="20" required>
+         </div>
+         <div>
+                <input list="skill" name="skill" required>
+                <datalist id="skill">
+                    <option value="beginner">
+                    <option value="intermediate"> 
+                    <option value="pre-advanced"> 
+                    <option value="advanced">     
+                </datalist>
+             </div>
+             <div>
+                    <input type="radio" name="instrument" id="instrument" value="piano" checked> Piano<br>
+                    <input type="radio" name="instrument"  value="voice"> Voice
+                    <input type="radio" name="instrument" value="string"> String
+                    <input type="radio" name="instrument" value="organ"> Organ
+                    <input type="radio" name="instrument" value="other"> Other
+                 </div>
+    
+    <div  id="row5" >
+            
+            <div> <input type="text" name="first_name_2" id="first_name_2" size="20" required>
+               </div>
+            <div>
+            <input type="text" name="last_name_2" id="last_name_2" size="20" required>
+            </div>
+            <div>
+                   <input type="text" name="student_id_2" id="student_id_2" size="20" required>
+                </div>
+                <div>
+                       <input list="skill" name="skill_2" required>
+                       <datalist id="skill_2">
+                           <option value="beginner">
+                           <option value="intermediate"> 
+                           <option value="pre-advanced"> 
+                           <option value="advanced">     
+                       </datalist>
+                    </div>
+                    <div>
+                           <input type="radio" name="instrument_2" id="instrument_2" value="piano" checked> Piano<br>
+                           <input type="radio" name="instrument_2" value="voice"> Voice
+                           <input type="radio" name="instrument_2" value="string"> String
+                           <input type="radio" name="instrument_2" value="organ"> Organ
+                           <input type="radio" name="instrument_2" value="other"> Other
+                        </div>
+           </div>
+</div>
+    </fieldset>
+    
+   </fieldset>
+   <input type="reset" value="Clear">
+   <input id="myButton"  name="register" value="Register" type="button"  onClick="onSubmit()">
+</form>
+
+    </body>
+</html>

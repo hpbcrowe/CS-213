@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+            <meta charset="UTF-8">
+            <title>Assignment11 JavaScript Form Validator</title>
+            <link rel="stylesheet" href="assign08.css">
+            <script>
+                /*
+                VALIDATING FUNCTIONS
+                Submit Button - onsubmit . Validate that the first name, last name, address, phone,
+                 credit card, and expiration date fields all have been filled out. If any field is missing text return false
+                  and set the focus to the first missing text field. Give this button the name "validate". 
+                  Note: Use a different technique besides "alerts" to indicate invalid input into a field.
+                */
+                function validateForm(){
+
+                  if(!validateFirstName()){
+                    document.getElementById("first_name").focus();
+                  }
+                    
+                  else if(!validateLastName()){
+                    document.getElementById("last_name").focus();
+                  }
+                  else if(!validateAddress()){
+                    document.getElementById("address").focus();
+                  }
+                    else if(!validatePhone()){
+                        document.getElementById("phone").focus();
+                    }
+                    else if(!validateCreditCard()){
+                        document.getElementById("credit_card").focus();
+                    } 
+                    else if(!validateExpirationDate()){
+                        document.getElementById("exp_date").focus();
+                    }
+                   
+                 }
+                function validateFirstName(){
+                    var first, 
+                   first = document.getElementById("first_name").value;
+                   if(first == " " ) {
+                    document.getElementById("firstName").innerHTML = "Please enter your first name (Required)";
+                    
+                    return false;
+                   } else{
+
+                    document.getElementById("firstName").innerHTML = " ";
+                    return true;
+                   } 
+                 }
+
+                
+                function validateLastName(){
+                    var last, 
+                   last = document.getElementById("last_name").value;
+                   if(last == " " ) {
+                    document.getElementById("lastName").innerHTML = "Please enter your last name (Required)";
+                    
+                    return false;
+                   } else{
+                    document.getElementById("lastName").innerHTML = " ";
+                    return true;
+                   } 
+                 }
+
+                 function validateAddress(){
+                    var address, 
+                   address = document.getElementById("address").value;
+                   if(address == " " ) {
+                    document.getElementById("addressWarning").innerHTML = "Please enter your full address (Required)";
+                     document.getElementById("address").focus();
+
+                    return false;
+                   } else{
+                    document.getElementById("addressWarning").innerHTML = " ";
+                    return true;
+                   } 
+                 }
+
+
+     function validatePhone(){
+                    
+                    var input = document.getElementById("phone").value;
+
+                    Number(input);
+                    if(input.match(/\d{3}-\d{3}-\d{4}/)){
+                        document.getElementById("phoneWarning").innerHTML = "Thank you ";
+                        return true;
+                    }
+                     else{
+                        document.getElementById("phoneWarning").innerHTML = "Please enter a valid phone #, xxx-xxx-xxxx";
+                        document.getElementById("phone").focus();
+
+                        return false;
+                     }
+     } 
+
+     function validateCreditCard(){
+        var credit = document.getElementById("credit_card").value;
+
+        //Number(credit);
+        if(credit.match(/[0-9]{12}/)){
+            document.getElementById("creditWarning").innerHTML = "Thank you";
+            return true;
+        }else{
+            document.getElementById("creditWarning").innerHTML = "Please enter a valid credit card #, xxxxxxxxxxxx";
+            return false;
+        }
+
+     } 
+
+     function validateExpirationDate(){
+        var date = document.getElementById("exp_date").value;
+        Number(date);
+        if(date.match(/0[1-9]|1[012][-/.](2019|20[20-22])/)){
+            document.getElementById("dateWarning").innerHTML = " ";
+            return true;
+        }else{
+            document.getElementById("dateWarning").innerHTML = "Please enter a valid expiration date 01-12 / 2017 ";
+            return false;
+
+        }
+
+     }       
+                  /*
+      Clear Functions
+      Clears default information when you click on the input box
+      */         
+function clearFirstName(){
+    document.getElementById("first_name").value=" "; 
+}
+function clearLastName(){
+    document.getElementById("last_name").value=" "; 
+}
+function clearAddress(){
+    document.getElementById("address").value=" ";
+}
+function clearPhone(){
+    document.getElementById("phone").value=" ";
+}
+function clearCreditCard(){
+    document.getElementById("credit_card").value=" ";
+}
+function clearExpirationDate(){
+    document.getElementById("exp_date").value=" ";
+}
+/*
+RESET FUNCTION
+Reset Button - clear all text fields and set focus to First Name - text field. Give this button the name "reset".
+*/
+function reset(){
+ clearFirstName();
+ clearLastName();
+ clearAddress();
+ clearPhone();
+ clearAddress();
+ clearAddress();
+ clearPhone();
+ clearCreditCard();
+ clearExpirationDate();
+ document.getElementById("first_name").focus();
+}
+
+/*
+TOTAL FUNCTION
+Include a Total field which automatically totals your purchases as each item is checked and unchecked). 
+Give this field the name "total".  I HAD THIS WORKING WITH FORM BUT I CAN'T GET IT TO WORK WITH TABLE.
+*/
+function totalItems(){
+    var table = document.forms[1];
+    var total = 0;
+    var i;
+    for (var i = 0; i < table.length; i++ ){
+        if (table[i].checked){
+            total += Number(table[i].value) ;
+        }
+    }
+    document.getElementById("totalCost").value = "Total Order Amt: $" + total.toFixed(2);
+}
+
+            </script>
+        </head>
+
+        <body>
+
+            <form>
+                <h1 id="top"></h1>
+                <fieldset>
+                    <legend>Customer Information </legend>
+                    <!--First Name - text field. Give this field the namefirstname.-->
+                    <p>First Name:  </p>
+                    <input id="first_name" value="First Name"  type="text" 
+                     onInput="validateFirstName()" style ="text-align:center; width:200px">
+                     <p id="firstName" style = "color:red" ></p>
+
+                   <!--Last Name - text field. Give this field the namelast_name.-->
+                    <p>Last Name:  </p>            
+                    <input id="last_name" value="Last Name" type="text" 
+                    onInput="validateLastName()" style ="text-align:center; width:200px">
+                    <p id="lastName" style = "color:red" ></p>
+
+                   <!--Address - text area field (street address, city, state, and zip). Give this field the name address-->
+                   <br>
+                    <p>Customer Address:</p>
+               <textarea rows="2" cols="50" id="address"  onInput="validateAddress()" >
+                 Street 
+                 City, State, Zip Code      
+                </textarea>
+                <p id="addressWarning" style ="color:red"></p>
+
+                <!--Phone - text field - requires validation (require 10 digits must be of the format2084973657
+                     Give this field the name phone-->
+                <br>
+                <p>Customer Phone #:</p>
+                <input id="phone" value="000-000-0000" type="text" size="12"  onInput = "validatePhone()" >
+                <p id="phoneWarning" style = "color:red"></p>
+                <br>
+                <br>
+                       <!--Credit Card # - text field - requires validation (must be 16 digits). Give this field the namecredit_card-->
+                 <p>Please Enter Your Credit Card Information:</p>
+                 <!--Credit Card Type - radio button group (visa, mastercard, american express). Give the radio buttons the name "card".-->
+                 <p>Type of Credit Card:</p>
+                 <input type ="radio" name="card" value="mastercard"> Mastercard<br>
+                 <input type ="radio" name="card" value="Visa"> Visa<br>
+                 <br>
+                 <input id ="credit_card" placeholder="0000-000-00-0000" type="text"  onInput = "validateCreditCard()">
+                 <br>
+                 <p id="creditWarning" style = "color:red"></p>
+                 <!--Credit Card Expiration Date - text field. - requires validation of data entered (i.e. valid month (1-12) 
+                    and valid year (> 2017 ). Give this field the nameexp_date-->
+                 <p>Expiration Date</p>
+                 <input id = "exp_date" placeholder="01-2017" type="text"  onInput = "validateExpirationDate()">
+                 <p id="dateWarning" style = "color:red"></p>
+            </fieldset>
+     
+        </form>  
+<!--Reset Button - clear all text fields and set focus to First Name - text field. Give this button the namereset-->
+            <input type="button" onclick="reset()" value="Reset">
+            <!--Submit Button - onsubmit . Validate that the first name, last name, address, phone, credit card,
+                 and expiration date fields all have been filled out. If any field is missing text return false and 
+                 set the focus to the first missing text field. Give this button the name validate
+                 Note: Use a different technique besides alerts to indicate invalid input into a field.-->
+        <input type="button" name="validate" onclick="validateForm()" value="Submit">
+ <!--Table with check boxes to display 4 or more items to purchase along with their corresponding purchase price
+     (use check boxes to allow selection of the items you wish to purchase). Give the checkboxes the name item_0 item_1 etc.-->
+      <br> <br> <br>   
+<form>
+      <table id="totalProducts" rules="all">
+          <tr>
+          <th>
+            Click to purchase
+          </th>
+          <th>
+              Items 
+            </th>
+            <th>
+              Price
+            </th>
+             </tr>
+            
+    
+     <tr> <td><input type="checkbox" name="item0" value="15.00" onclick ="totalItems()"> <td> Corrosive agent  </td> <td>$15.00</td></tr>
+
+     <tr><td><input type="checkbox" name="item1" value="35.00" onclick ="totalItems()"> <td>Hot glue gun</td> <td>$35.00</td>
+      </tr>
+     <tr><td> <input type="checkbox" name="item2" value="5.99" onclick ="totalItems()"> <td>Ice Cream</td> <td>$5.99</td>
+      </tr>
+     <tr><td><input type="checkbox"  name="item3" value="21.00" onclick ="totalItems()"> <td> Basketball</td> <td> $21.00</td></tr>
+      
+     
+      <!--Include a Total field which automatically totals your purchases as each item is
+         checked and unchecked). Give this field the name "total".-->
+         
+     <input type="text" id="totalCost" value="">
+    
+      </table>
+</form>
+
+            </body>
+
+            <footer>
+                    <div class="navbar">
+                            <a href="assign02.html">Homepage</a>
+                            <a href="index.html">CS213 Assignments</a>
+                                    
+                          </div>
+            </footer>
+
+
+
+</html>
